@@ -34,7 +34,7 @@ const typeDefs = gql`
 
   type Event {
     _id: ID,
-    date: Date,
+    createdAt: Date,
     time: String,
     commitments: [String],
     flakes: [String],
