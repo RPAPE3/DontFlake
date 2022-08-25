@@ -13,6 +13,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Nav from './components/Nav';
 import NoMatch from './pages/NoMatch';
+// import LeftSide from './components/LeftSide';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -32,6 +33,8 @@ const client = new ApolloClient({
   link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
+
+
 
 function App() {
   return (

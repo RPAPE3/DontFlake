@@ -30,8 +30,7 @@ function Login(props) {
   };
 
   return (
-    <div className="container my-1">
-      <Link to="/signup">← Go to Signup</Link>
+    <card className="container">
 
       <h2>Login</h2>
       <form onSubmit={handleFormSubmit}>
@@ -64,7 +63,7 @@ function Login(props) {
           <button type="submit">Submit</button>
         </div>
       </form>
-    </div>
+    </card>
   );
 }
 

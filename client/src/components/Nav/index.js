@@ -7,15 +7,15 @@ function Nav() {
   function showNavigation() {
     if (Auth.loggedIn()) {
       return (
-        <ul className="flex-row">
-          <li className="mx-1">
-            <Link to="/orderHistory">
-              Test Tab
+        <ul className="nav navbar-nav navbar-right d-flex flex-row">
+          <li style={{ paddingRight: '20px',}}>
+            <Link to="/orderHistory" style={{ textDecoration: 'none'}}>
+              Profile 
             </Link>
           </li>
-          <li className="mx-1">
+          <li style={{ paddingRight: '20px'}}>
             {/* this is not using the Link component to logout or user and then refresh the application to the start */}
-            <a href="/" onClick={() => Auth.logout()}>
+            <a href="/" style={{ textDecoration: 'none'}} onClick={() => Auth.logout()}>
               Logout
             </a>
           </li>
@@ -23,14 +23,14 @@ function Nav() {
       );
     } else {
       return (
-        <ul className="flex-row">
-          <li className="mx-1">
-            <Link to="/signup">
+        <ul className="nav navbar-nav navbar-right d-flex flex-column flex-row-reverse">
+          <li style={{ paddingRight: '20px',}}>
+            <Link to="/signup" style={{ textDecoration: 'none'}}>
               Signup
             </Link>
           </li>
-          <li className="mx-1">
-            <Link to="/login">
+          <li style={{ paddingRight: '20px'}}>
+            <Link to="/login" style={{ textDecoration: 'none'}}>
               Login
             </Link>
           </li>
@@ -40,17 +40,19 @@ function Nav() {
   }
 
   return (
-    <header className="flex-row px-1">
-      <h1>
-        <Link to="/">
-          <span role="img" aria-label="shopping bag">🛍️</span>
+    <header>
+      <nav className="navbar navbar-default navbar-fixed-top border-bottom box-shadow">
+        <Link to="/" style={{ textDecoration: 'none'}}> 
+        <div className="container container-fluid">
+          <img class="icon" src="https://i.imgur.com/kz7TuDa.png" alt="iconOne" border="0" style={{ width: '25px', height:'25px'}}></img>
           WYD
+          </div>
         </Link>
-      </h1>
-
-      <nav>
+      <ul className='navbar-nav d-flex flex-row-reverse'>
         {showNavigation()}
+      </ul>
       </nav>
+
     </header>
   );
 }
