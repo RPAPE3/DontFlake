@@ -1,3 +1,5 @@
-const User = require('./User');
+const Profile = require('./Profile');
+const Event = require('./Event');
+const Group = require('./Group');
 
-module.exports = { User };
+module.exports = { Profile, Event, Group };
