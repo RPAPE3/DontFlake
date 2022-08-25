@@ -215,6 +215,8 @@ input:focus {
   }
 }
 /********************/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
 body{
 	line-height: 1.5;
 	font-family: 'Poppins', sans-serif;
@@ -238,6 +240,7 @@ ul{
 .footer{
 	background-color: #4F4d53;
     padding: 20px 0;
+    
 }
 .footer-col{
    width: 25%;
@@ -247,7 +250,7 @@ ul{
 	font-size: 18px;
 	color: #d7c81b;
 	text-transform: capitalize;
-	margin-bottom: 35px;
+	margin-bottom: 30px;
 	font-weight: 500;
 	position: relative;
 }
@@ -263,6 +266,7 @@ ul{
 }
 .footer-col ul li:not(:last-child){
 	margin-bottom: 10px;
+  
 }
 .footer-col ul li a{
 	font-size: 16px;

@@ -44,7 +44,7 @@ function Nav() {
     <header className="flex-row px-5 justify-content-end ">
       <h1>
         <Link to="/">
-          <img src={logo} alt="logo" class="mt-1 mx-1 position-absolute top-0 start-0"/>
+          <img src={logo} alt="logo" className="mt-1 mx-1 position-absolute top-0 start-0"/>
         </Link>
       </h1>
 
