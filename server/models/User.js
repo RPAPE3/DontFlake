@@ -1,12 +1,12 @@
-const mongoose = require('mongoose');
-
-const { Schema } = mongoose;
-const bcrypt = require('bcrypt');
+const { Schema, model } = require('mongoose');
 const Group = require('./Group');
 const Event = require('./Event');
 
 
-const profileSchema = new Schema({
+const bcrypt = require('bcrypt');
+
+
+const userSchema = new Schema({
   firstName: {
     type: String,
     required: true,
@@ -34,8 +34,9 @@ const profileSchema = new Schema({
     maxlength: 30,
     trim: true
   },
-  profile_picture: {
-    type: Image
+  profilePicture: {
+    type: String,
+    trim: true
   },
   area: {
     type: String,
@@ -45,62 +46,74 @@ const profileSchema = new Schema({
   birthday: {
     type: Date
   },
-  flake_rating: {
+  flakeRating: {
     type: Number,
     default: 100,
     min: 0,
     max: 100
   },
-  public_requests: [
+  publicRequests: [
     {
-      profile_name: String,
-      trim: true,
-    }
-  ],
-  user_request: [
-    {
-      profile_name:  { 
-        type: String,
-        trim: true
-      }
-    }
-  ],
-  events_attended: [
-    {
-    event_name: {
       type: String,
       trim: true
-    },
-    date: Date
     }
   ],
-  events: [Event.schema],
-  connections: [
+  userRequests: [
     {
-      self_username: {
+      type: String,
+      trim: true
+    }
+  ],
+  eventsAttended: [
+    {
+      eventName: {
+        type: String,
+        trim: true
+      },
+      date: Date
+    }
+  ],
+  connection: [
+    {
+      selfUsername: {
         type: String,
         required: true,
         unique: true,
         maxlength: 30,
         trim: true
       },
-      other_username: {
+      otherUsername: {
         type: String,
         required: true,
         unique: true,
         maxlength: 30,
         trim: true
       },
-      close_friend: {
+      closeFriend: {
         type: Boolean,
         default: false,
       }
     }
   ],
-  groups: [Group.schema]
+
+    events: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Event' 
+      }
+    ],
+
+    groups: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Group' 
+      }
+    ]
+
 });
 
-profileSchema.pre('save', async function(next) {
+// set up pre-save middleware to create password
+userSchema.pre('save', async function (next) {
   if (this.isNew || this.isModified('password')) {
     const saltRounds = 10;
     this.password = await bcrypt.hash(this.password, saltRounds);
@@ -109,10 +122,11 @@ profileSchema.pre('save', async function(next) {
   next();
 });
 
-profileSchema.methods.isCorrectPassword = async function(password) {
+// compare the incoming password with the hashed password
+userSchema.methods.isCorrectPassword = async function (password) {
   return await bcrypt.compare(password, this.password);
 };
 
-const Profile = mongoose.model('User', profileSchema);
+const User = model('User', userSchema);
 
-module.exports = Profile;
+module.exports = User;

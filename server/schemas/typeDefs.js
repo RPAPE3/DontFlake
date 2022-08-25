@@ -9,26 +9,26 @@ const typeDefs = gql`
     email: String
     password: String
     username: String
-    profile_picture: Image
+    profilePicture: String
     area: String
-    birthday: String
-    flake_rating: Int
-    public_request: [String]
-    user_requests: [String]
+    birthday: Date
+    flakeRating: Int
+    publicRequest: [String]
+    userRequests: [String]
     events_attend: [
       {
-        event_name: String
+        eventName: String
         date: Date
       }
     ]
-    events: [Event]
-    connections: [
+    connection: [
       {
-        self_username: String,
-        other_username: String,
-        close_friend: Boolean
+        selfUsername: String,
+        otherUsername: String,
+        closeFriend: Boolean
       }
     ]
+    events: [Event]
     groups: [Group]
   }
 
@@ -44,11 +44,11 @@ const typeDefs = gql`
     description: String,
     address: String,
     private: Boolean,
-    image: Image,
-    recaps: [
+    image: String,
+    recap: [
       {
-        images: Image,
-        event_description: String
+        images: String,
+        eventDescription: String
       }
     ]
   }

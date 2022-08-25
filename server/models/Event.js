@@ -1,11 +1,12 @@
-const mongoose = require('mongoose');
-
-const { Schema } = mongoose;
+const { Schema, model } = require('mongoose');
+const dateFormat = require('../utils/dateFormat');
 
 const eventSchema = new Schema ({
-    date: {
+    
+    createdAt: {
         type: Date,
-        required: true,
+        default: Date.now,
+        get: (timestamp) => dateFormat(timestamp),
     },
     time: {
         type: String,
@@ -48,23 +49,24 @@ const eventSchema = new Schema ({
         type: Boolean
     },
     image: {
-        type: Image
+        type: String,
+        trim: true
     },
-    recaps: [
+    recap: [
         {
             image: {
-                type: Image,
+                type: String,
+                trim: true
             },
-            event_description: {
+            eventDescription: {
                 type: String,
                 trim: true,
                 required: true
             },
         }
     ]
-
 });
 
-const Event = mongoose.model('Event', eventSchema);
+const Event = model('Event', eventSchema);
 
 module.exports = Event;
