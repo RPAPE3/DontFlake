@@ -4,37 +4,24 @@ const typeDefs = gql`
 
   type User {
     _id: ID
-    firstName: String
+    firstName: String!
     lastName: String
-    email: String
-    password: String
+    email: String!
     username: String
     profilePicture: String
     area: String
-    birthday: Date
+    birthday: String
     flakeRating: Int
     publicRequest: [String]
     userRequests: [String]
-    eventsAttend: [
-      {
-        eventName: String
-        date: Date
-      }
-    ]
-    connection: [
-      {
-        selfUsername: String,
-        otherUsername: String,
-        closeFriend: Boolean
-      }
-    ]
     events: [Event]
     groups: [Group]
+    
   }
 
   type Event {
-    _id: ID,
-    createdAt: Date,
+    _id: ID
+    createdAt: String!,
     time: String,
     commitments: [String],
     flakes: [String],
@@ -45,18 +32,40 @@ const typeDefs = gql`
     address: String,
     private: Boolean,
     image: String,
-    recap: [
-      {
-        images: String,
-        eventDescription: String
-      }
-    ]
   }
 
   type Group {
-    title: String,
-    member: [Profile],
+    _id: ID
+    title: String
+    members: [User]
     events: [Event]
+  }
+
+  type Connection {
+    selfUsername: String!
+    otherUsername: String
+    closeFriend: Boolean
+    connections: [String]
+  }
+
+
+  type Event {
+    createdAt: String!
+    time: String
+    commitments: [String]
+    flake: [String]
+    theme: String
+    active: String
+    author: String
+    description: String
+    address: String
+    private: String
+    image: String
+  }
+
+  type Recap {
+    image: String
+    eventDescription: String
   }
 
   type Auth {
@@ -66,7 +75,9 @@ const typeDefs = gql`
 
   type Query {
     me: User
-    user: User
+    user(email: String!): User
+    users: [User]
+    events: [Event]
   }
 
   type Mutation {

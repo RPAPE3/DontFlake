@@ -13,6 +13,14 @@ const eventSchema = new Schema ({
         required: true,
         trim: true
     },
+    title: {
+        type: String,
+        trim: true
+    },
+    date: {
+        type: String,
+        trim: true
+    },
     commitments: [
         {
             type: String,
@@ -32,7 +40,7 @@ const eventSchema = new Schema ({
     active: {
         type: Boolean
     },
-    author: {
+    eventAuthor: {
         type: String,
         required: true,
         trim: true,
