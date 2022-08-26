@@ -8,7 +8,8 @@ db.once('open', async () => {
     firstName: 'Pamela',
     lastName: 'Washington',
     email: 'pamela@testmail.com',
-    password: 'password12345'
+    password: 'password12345',
+    
   });
 
   await User.create({

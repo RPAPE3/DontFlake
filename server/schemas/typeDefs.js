@@ -15,7 +15,7 @@ const typeDefs = gql`
     flakeRating: Int
     publicRequest: [String]
     userRequests: [String]
-    events_attend: [
+    eventsAttend: [
       {
         eventName: String
         date: Date
