@@ -1,5 +1,5 @@
 :root {
-  --primary: #4F4D53;
+  --primary: rgb(0, 0, 0);
   --secondary: #f4f118;
   --tertiary: #B12704;
   --light: #fafafa;
@@ -265,8 +265,8 @@ ul{
 	list-style: none;
 }
 .footer{
-	background-color: #4F4d53;
-    padding: 20px 0;
+	background-color: #000000;
+    padding: 15px 0;
     
 }
 .footer-col{

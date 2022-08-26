@@ -13,11 +13,15 @@ import Auth from "../utils/auth";
 
 const Home = () => {
   return (
-    <Container fluid='true'>
+    <Container fluid="true">
       <Row className="row justify-content-between">
         <Col
           sm={2}
-          style={{ background: "grey", minHeight: "90vh", marginLeft: '50px'}}
+          style={{
+            background: "#e0c2f2",
+            minHeight: "90vh",
+            marginLeft: "30px",
+          }}
         >
           Test This sidebar out
         </Col>
@@ -25,19 +29,19 @@ const Home = () => {
           <>
             <Col
               sm={3}
-              style={{ background: "orange" }}
+              style={{ background: "#6F3096" }}
               className="d-flex flex-grow-1"
             >
               <UserFeed />
             </Col>
-            <Col sm={2} style={{ background: "red", marginRight: '50px' }}>
+            <Col sm={2} style={{ background: "#e0c2f2", marginRight: "50px" }}>
               <UserProfile />
             </Col>
           </>
         ) : (
           <Col
             sm={8}
-            style={{ background: "orange", marginTop: 25 }}
+            style={{ background: "purple", marginTop: 25 }}
             className="text-center d-flex justify-content-center"
           >
             <div style={{ marginTop: "15%" }}>
@@ -114,8 +118,8 @@ const Home = () => {
                   <a href="https://twitter.com/GroupWyd">
                     <i className="fab fa-twitter"></i>
                   </a>
-                  <a href="#">
-                    <i className="fab fa-facebook-f"></i>
+                  <a href="https://github.com/RPAPE3/WYD">
+                    <i className="fab fa-github"></i>
                   </a>
                   <a href="https://www.instagram.com/groupwyd/">
                     <i className="fab fa-instagram"></i>
