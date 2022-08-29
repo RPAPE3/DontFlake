@@ -20,8 +20,9 @@ const UserEventsFeed = ({
               style={{
                 width: "75%",
                 marginLeft: "12%",
-                marginBottom: "5px",
-                marginTop: "5px",
+                marginBottom: "10px",
+                marginTop: "10px",
+                boxShadow: "5px 5px black",
               }}
             >
               <div className="card-header">

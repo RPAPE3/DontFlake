@@ -55,6 +55,7 @@ const Home = () => {
                         borderStyle: "solid",
                         marginTop: "2vh",
                         backgroundColor: "purple",
+                        boxShadow: "5px 5px grey",
                       }}
                     >
                       Events
@@ -67,6 +68,7 @@ const Home = () => {
                         borderStyle: "solid",
                         marginTop: "2vh",
                         backgroundColor: "purple",
+                        boxShadow: "5px 5px grey",
                       }}
                     >
                       Friends
@@ -79,6 +81,7 @@ const Home = () => {
                         borderStyle: "solid",
                         marginTop: "2vh",
                         backgroundColor: "purple",
+                        boxShadow: "5px 5px grey",
                       }}
                     >
                       Groups
@@ -95,6 +98,7 @@ const Home = () => {
                     width: "20vh",
                     borderStyle: "solid",
                     backgroundColor: "purple",
+                    boxShadow: "5px 5px grey",
                   }}
                 >
                   {/* this is not using the Link component to logout or user and then refresh the application to the start */}

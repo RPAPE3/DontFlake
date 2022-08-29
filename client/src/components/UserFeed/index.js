@@ -120,6 +120,7 @@ const UserFeed = () => {
                   width: "50%",
                   marginLeft: "25%",
                   backgroundColor: "black",
+                  boxShadow: "5px 5px grey",
                 }}
               >
                 Post Event!
