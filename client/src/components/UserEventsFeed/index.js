@@ -17,13 +17,7 @@ const UserEventsFeed = ({
             <div
               key={event._id}
               className="card text-center"
-              style={{
-                width: "75%",
-                marginLeft: "12%",
-                marginBottom: "10px",
-                marginTop: "10px",
-                boxShadow: "5px 5px black",
-              }}
+              style={{ width: "75%", marginLeft: "12%" }}
             >
               <div className="card-header">
                 <h2>Event-Title {event.title} </h2>

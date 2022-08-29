@@ -14,12 +14,17 @@ import { color } from "@mui/system";
 const UserFeed = () => {
   const [open, setOpen] = useState(false);
 
+  function refreshComponent() {
+    window.location.reload(false);
+  }
+
   const profile = Auth.getProfile();
   const { loading, data } = useQuery(QUERY_USER_DATA, {
     variables: { email: profile.data.email },
   });
 
   const user = data?.me || data?.user || {};
+  const events = data?.user.events || [];
 
   if (loading) {
     return <div>Loading...</div>;
@@ -49,10 +54,9 @@ const UserFeed = () => {
           style={{
             height: "100px",
             width: "100%",
-            marginTop: "10px",
-            backgroundColor: "purple",
-            color: "white",
-            marginBottom: "10px",
+            marginTop: "30px",
+            backgroundColor: "#979dac",
+            color: "black",
           }}
           onClick={() => setOpen(!open)}
           aria-controls="example-collapse-text"
@@ -62,31 +66,25 @@ const UserFeed = () => {
         </Button>
         <Collapse in={open}>
           <div id="example-collapse-text">
-            <form
-              style={{
-                width: "100%",
-                backgroundColor: "purple",
-                marginBottom: "10px",
-              }}
-            >
-              <div className="form-group border border-dark p-3 mb-2 text-dark text-center collpase">
+            <form style={{ width: "100%", backgroundColor: "#979dac" }}>
+              <div className="form-group border border-primary p-3 mb-2 text-dark text-center collpase">
                 <input
                   type="text"
                   class="form-control"
-                  style={{ height: "100px", marginBottom: "5px" }}
-                  placeholder="Enter a description for your event here:"
+                  style={{ height: "100px" }}
+                  placeholder="enter a description for your event here"
                 />
                 <input
                   type="text"
                   class="form-control"
-                  style={{ height: "100px", marginBottom: "5px" }}
+                  style={{ height: "100px" }}
                   placeholder="Date/Time of your event?"
                 />
                 <input
                   type="text"
                   class="form-control"
-                  style={{ height: "100px", marginBottom: "5px" }}
-                  placeholder="Where is the event being held?"
+                  style={{ height: "100px" }}
+                  placeholder="where is the event being held?"
                 />
                 <div class="form-check form-check-inline">
                   <input
@@ -115,13 +113,8 @@ const UserFeed = () => {
               </div>
               <button
                 type="submit"
-                className="btn btn-dark p-3 mb-2 text-white"
-                style={{
-                  width: "50%",
-                  marginLeft: "25%",
-                  backgroundColor: "black",
-                  boxShadow: "5px 5px grey",
-                }}
+                className="btn btn-primary p-3 mb-2 bg-danger text-white"
+                style={{ width: "50%", marginLeft: "25%" }}
               >
                 Post Event!
               </button>

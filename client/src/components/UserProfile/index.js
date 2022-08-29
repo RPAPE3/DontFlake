@@ -44,7 +44,6 @@ const Profile = () => {
             backgroundColor: "#541675",
             color: "white",
             borderColor: "grey",
-            boxShadow: "5px 5px grey",
           }}
           variant="warning"
         >
