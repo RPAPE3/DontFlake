@@ -5,15 +5,79 @@ import Button from "react-bootstrap/Button";
 import Collapse from "react-bootstrap/Collapse";
 import { CREATE_EVENT } from "../../utils/mutations";
 import UserEventsFeed from "../UserEventsFeed";
-
-import { QUERY_USER_DATA } from "../../utils/queries";
+import { QUERY_EVENT, QUERY_USER, QUERY_USER_DATA } from "../../utils/queries";
 
 import Auth from "../../utils/auth";
 
 const UserFeed = () => {
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [date, setDate] = useState("");
+  const [address, setAddress] = useState("");
 
-  
+  const [addEvent, { error }] = useMutation(CREATE_EVENT, {
+    update(cache, { data: { addEvent } }) {
+      try {
+        const { event } = cache.readQuery({ query: QUERY_EVENT });
+
+        cache.writeQuery({
+          query: QUERY_EVENT,
+          data: { events: [addEvent, ...event] },
+        });
+      } catch (e) {
+        console.error(e);
+      }
+
+      const { user } = cache.readQuery({ query: QUERY_USER_DATA });
+      cache.writeQuery({
+        query: QUERY_USER_DATA,
+        data: { user: { ...user, events: [...user.events, addEvent] } },
+      });
+    },
+  });
+
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      const { data } = await addEvent({
+        variables: {
+          title,
+          description,
+          date,
+          address,
+          eventAuthor: Auth.getProfile().data.email,
+        },
+      });
+
+      setTitle("");
+      setDescription("");
+      setDate("");
+      setAddress("");
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    if (name === "description" && value.length <= 280) {
+      setDescription(value);
+    } else if (name === "title") {
+      setTitle(value);
+    } else if (name === "date") {
+      setDate(value);
+    } else if (name === "address") {
+      setAddress(value);
+    }
+  };
+
   const [open, setOpen] = useState(false);
+
+  function refreshComponent() {
+    window.location.reload(false);
+  }
 
   const profile = Auth.getProfile();
   const { loading, data } = useQuery(QUERY_USER_DATA, {
@@ -21,6 +85,7 @@ const UserFeed = () => {
   });
 
   const user = data?.me || data?.user || {};
+  const events = data?.user.events || [];
 
   if (loading) {
     return <div>Loading...</div>;
@@ -34,7 +99,6 @@ const UserFeed = () => {
       </h4>
     );
   }
-
 
   return (
     <>
@@ -67,27 +131,61 @@ const UserFeed = () => {
         </Button>
         <Collapse in={open}>
           <div id="example-collapse-text">
-            <form style={{ width: "100%", backgroundColor: "#a64dff", color: 'white', marginBottom: '5px' }}>
-              <div className="form-group border p-3 mb-2 text-dark text-center collpase" style={{borderColor: 'black'}}>
-                <input
-                  type="text"
-                  class="form-control"
-                  style={{ height: "100px", marginBottom: '5px' }}
-                  placeholder="enter a description for your event here"
-                />
-                <input
-                  type="text"
-                  class="form-control"
-                  style={{ height: "100px", marginBottom: '5px' }}
-                  placeholder="Date/Time of your event?"
-                />
-                <input
-                  type="text"
-                  class="form-control"
-                  style={{ height: "100px", marginBottom: '5px' }}
-                  placeholder="where is the event being held?"
-                />
-                <div class="form-check form-check-inline">
+            <form
+              style={{ width: "100%", backgroundColor: "#a64dff", color: 'white', marginBottom: '5px' }}
+              onSubmit={handleFormSubmit}
+            >
+              <div className="form-group border border-primary p-3 mb-2 text-dark text-center collpase" style={{borderColor: 'black'}}>
+                <div>
+                  <textarea
+                    // name="text"
+                    name="title"
+                    // class="form-control"
+                    className="form-input"
+                    style={{ height: "100px", marginBottom: '5px' }}
+                    placeholder="Title"
+                    value={title}
+                    onChange={handleChange}
+                  ></textarea>
+                </div>
+                <div>
+                  <textarea
+                    // name="text"
+                    name="description"
+                    // class="form-control"
+                    className="form-input"
+                    style={{ height: "100px", marginBottom: '5px' }}
+                    placeholder="Description of Event"
+                    value={description}
+                    onChange={handleChange}
+                  ></textarea>
+                </div>
+                <div>
+                  <textarea
+                    // type="text"
+                    name="date"
+                    // class="form-control"
+                    className="form-input"
+                    style={{ height: "100px", marginBottom: '5px' }}
+                    placeholder="Date/Time of your event?"
+                    value={date}
+                    onChange={handleChange}
+                  ></textarea>
+                </div>
+                <div>
+                  <textarea
+                    // type="text"
+                    name="address"
+                    // class="form-control"
+                    className="form-input"
+                    style={{ height: "100px" }}
+                    placeholder="Event Location"
+                    value={address}
+                    onChange={handleChange}
+                  ></textarea>
+                </div>
+                {/* <div class="form-check form-check-inline">
+>>>>>>> 2cc782c3bfb7c01a7a40f539afb5492aac3e7d2e
                   <input
                     class="form-check-input"
                     type="radio"
@@ -110,10 +208,11 @@ const UserFeed = () => {
                   <label class="form-check-label" for="inlineRadio2" style={{color: 'white'}}>
                     Public Event
                   </label>
-                </div>
+                </div> */}
               </div>
               <button
                 type="submit"
+                onClick={refreshComponent}
                 className="btn btn-primary p-3 mb-2"
                 style={{ width: "50%", marginLeft: "25%", backgroundColor: "white", color: 'black' }}
               >
