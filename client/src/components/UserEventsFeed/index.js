@@ -11,9 +11,9 @@ const UserEventsFeed = ({
 }) => {
     if (events.length) {
         return (
-            <>
+            <div style={{fontFamily: 'roboto'}}>
                 {events &&
-                 events.map((event) => (
+                events.map((event) => (
                     <div key={event._id} className="card text-center" style={{width: '75%', marginLeft: '12%'}}>
                     <div className="card-header">
                         <h2>Event-Title {event.title} </h2>
@@ -27,12 +27,12 @@ const UserEventsFeed = ({
                         Event-Author: {event.eventAuthor} // Event-CreatedAt: {event.createdAt}
                     </div>
                 </div>
-                 ))}
+                ))}
                 
-            </>
+            </div>
         )
     }
-    return <h3>no events</h3>
+    return <h3 style={{color: 'black', backgroundColor: '#979dac', marginBottom: '0px', fontFamily: 'roboto', border: '1px solid grey'}}>no events</h3>
 };
 
 export default UserEventsFeed;

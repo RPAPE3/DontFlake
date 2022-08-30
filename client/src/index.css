@@ -141,7 +141,7 @@ form {
 input {
   font-size: 1rem;
   padding: 0.25rem;
-  border: 1px solid var(--dark);
+  border: 1px var(--dark);
   outline: none;
   border-radius: 10px;
   transition: box-shadow 0.2s;
@@ -286,7 +286,7 @@ ul{
 	position: absolute;
 	left:0;
 	bottom: -10px;
-	background-color: #e91e63;
+	background-color: #a64dff;
 	height: 2px;
 	box-sizing: border-box;
 	width: 50px;
@@ -323,7 +323,7 @@ ul{
 }
 .footer-col .social-links a:hover{
 	color: #24262b;
-	background-color: #ff0000;
+	background-color: #a64dff;
 }
 
 /*responsive*/
@@ -337,4 +337,64 @@ ul{
   .footer-col{
     width: 100%;
 }
+}
+
+.glow-on-hover {
+  width: 220px;
+  height: 50px;
+  border: none;
+  outline: none;
+  color: #fff;
+  background-color: #111;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
+}
+
+.glow-on-hover:before {
+  content: '';
+  background: linear-gradient(45deg, #6200ff, #3700ff, #0051ff, #00a2ff, #00ffd5, #00f7ff, #0051ff, #3700ff, #6200ff);
+  position: absolute;
+  top: -2px;
+  left:-2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing 20s linear infinite;
+  opacity: 0;
+  transition: opacity .3s ease-in-out;
+  border-radius: 10px;
+}
+
+.glow-on-hover:active {
+  color: rgb(255, 255, 255)
+}
+
+.glow-on-hover:active:after {
+  background: transparent;
+}
+
+.glow-on-hover:hover:before {
+  opacity: 1;
+}
+
+.glow-on-hover:after {
+  z-index: -1;
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #111;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
+
+@keyframes glowing {
+  0% { background-position: 0 0; }
+  50% { background-position: 400% 0; }
+  100% { background-position: 0 0; }
 }
