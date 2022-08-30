@@ -5,6 +5,7 @@ import Button from "react-bootstrap/Button";
 import Collapse from "react-bootstrap/Collapse";
 import { CREATE_EVENT } from "../../utils/mutations";
 import UserEventsFeed from "../UserEventsFeed";
+import UserFriendsEvents from '../UserFriendsEvents'
 import { QUERY_EVENT, QUERY_USER, QUERY_USER_DATA } from "../../utils/queries";
 
 import Auth from "../../utils/auth";
@@ -216,9 +217,14 @@ const UserFeed = () => {
             </form>
           </div>
         </Collapse>
-
-        <div style={{ background: "grey" }}>
-          <UserEventsFeed events={user.events} username={user.username} />
+        
+        <div style={{ background: 'grey'}}>
+          <UserEventsFeed 
+          events={user.events}
+          />
+          <UserFriendsEvents 
+          friends={user.friends}
+           />
         </div>
       </div>
     </>

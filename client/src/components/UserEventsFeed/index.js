@@ -2,12 +2,7 @@ import React from "react";
 // import { Link } from 'react-router-dom';
 
 const UserEventsFeed = ({
-events,
-username,
-description,
-eventAuthor,
-date,
-address,
+  events,
 }) => {
     if (!events.length) {
     return <h3 style={{color: 'black', backgroundColor: '#979dac', marginBottom: '0px', fontFamily: 'roboto', border: '1px solid grey'}}>no events</h3>;

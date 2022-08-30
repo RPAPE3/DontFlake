@@ -40,10 +40,10 @@ const Profile = () => {
       <div style={{borderWidth: '5px', borderStyle: 'solid', borderColor:'black', marginRight: '10px'}}>
         <h1 style={{textAlign: 'center'}}> {user.username} </h1>
         <ul style={{listStyleType: 'none'}}>
-          <li style={{color: 'black'}}>Friends: { user.connections.length} </li>
-          <li style={{color: 'black'}}>Connections: </li>
-          <li style={{color: 'black'}}>Events: {user.events.length} </li>
-          <li style={{color: 'black'}}>Flake Rating: </li>
+          <li>Friends: { user.friends.length} </li>
+          <li>Connections: </li>
+          <li>Events: {user.events.length} </li>
+          <li>Flake Rating: </li>
         </ul>
       </div>
     </div>
