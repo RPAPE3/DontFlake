@@ -53,7 +53,6 @@ const Home = () => {
               </div>
             </Col>
 
-
             <Col
               sm={8}
               style={{ background: "white", border: '2px solid grey' }}

@@ -35,15 +35,15 @@ const Profile = () => {
     <div>
       <div style={{textAlign: 'center'}}>
         <Image style={{width: '12vh', marginBottom: '1vh', marginTop: '1vh'}} fluid="true" src={logo}/>
-        <Link style={{ width: '20vh', borderStyle: 'solid', marginTop: '2vh', borderColor:'black', backgroundColor: "#a64dff", boxShadow: '5px 5px grey', marginBottom: '15px', color: 'white' }} variant="warning" to="/FullProfile">Full Profile</Link>{' '}
+        <Link style={{ width: '20vh', borderStyle: 'solid', marginTop: '2vh', borderColor:'black', backgroundColor: "#a64dff", boxShadow: '5px 5px grey', marginBottom: '15px', color: 'black' }} variant="warning" to="/FullProfile">Full Profile</Link>{' '}
       </div>
-      <div style={{borderWidth: '5px', borderStyle: 'solid', borderColor:'white', marginRight: '10px'}}>
+      <div style={{borderWidth: '5px', borderStyle: 'solid', borderColor:'black', marginRight: '10px'}}>
         <h1 style={{textAlign: 'center'}}> {user.username} </h1>
         <ul style={{listStyleType: 'none'}}>
-          <li style={{color: 'white'}}>Friends: { user.connections.length} </li>
-          <li style={{color: 'white'}}>Connections: </li>
-          <li style={{color: 'white'}}>Events: {user.events.length} </li>
-          <li style={{color: 'white'}}>Flake Rating: </li>
+          <li style={{color: 'black'}}>Friends: { user.connections.length} </li>
+          <li style={{color: 'black'}}>Connections: </li>
+          <li style={{color: 'black'}}>Events: {user.events.length} </li>
+          <li style={{color: 'black'}}>Flake Rating: </li>
         </ul>
       </div>
     </div>

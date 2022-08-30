@@ -85,7 +85,7 @@ const UserFeed = () => {
   });
 
   const user = data?.me || data?.user || {};
-  const events = data?.user.events || [];
+  // const events = data?.user.events || [];
 
   if (loading) {
     return <div>Loading...</div>;
@@ -116,33 +116,29 @@ const UserFeed = () => {
             height: "100px",
             width: "100%",
             marginTop: "30px",
-            backgroundColor: "#a64dff",
+            backgroundColor: "#979dac",
             color: "black",
-            fontFamily: 'roboto',
-            border: '2px solid black',
-            color: 'black',
-            fontWeight: '600'
           }}
           onClick={() => setOpen(!open)}
           aria-controls="example-collapse-text"
           aria-expanded={open}
         >
-          CLICK ME TO POST AN EVENT!
+          click me to post an event!
         </Button>
         <Collapse in={open}>
           <div id="example-collapse-text">
             <form
-              style={{ width: "100%", backgroundColor: "#a64dff", color: 'white', marginBottom: '5px' }}
+              style={{ width: "100%", backgroundColor: "#979dac" }}
               onSubmit={handleFormSubmit}
             >
-              <div className="form-group border border-primary p-3 mb-2 text-dark text-center collpase" style={{borderColor: 'black'}}>
+              <div className="form-group border border-primary p-3 mb-2 text-dark text-center collpase">
                 <div>
                   <textarea
                     // name="text"
                     name="title"
                     // class="form-control"
                     className="form-input"
-                    style={{ height: "100px", marginBottom: '5px' }}
+                    style={{ height: "100px" }}
                     placeholder="Title"
                     value={title}
                     onChange={handleChange}
@@ -154,7 +150,7 @@ const UserFeed = () => {
                     name="description"
                     // class="form-control"
                     className="form-input"
-                    style={{ height: "100px", marginBottom: '5px' }}
+                    style={{ height: "100px" }}
                     placeholder="Description of Event"
                     value={description}
                     onChange={handleChange}
@@ -166,7 +162,7 @@ const UserFeed = () => {
                     name="date"
                     // class="form-control"
                     className="form-input"
-                    style={{ height: "100px", marginBottom: '5px' }}
+                    style={{ height: "100px" }}
                     placeholder="Date/Time of your event?"
                     value={date}
                     onChange={handleChange}
@@ -185,7 +181,6 @@ const UserFeed = () => {
                   ></textarea>
                 </div>
                 {/* <div class="form-check form-check-inline">
->>>>>>> 2cc782c3bfb7c01a7a40f539afb5492aac3e7d2e
                   <input
                     class="form-check-input"
                     type="radio"
@@ -193,7 +188,7 @@ const UserFeed = () => {
                     id="inlineRadio1"
                     value="option1"
                   />
-                  <label class="form-check-label" for="inlineRadio1" style={{color: 'white', marginBottom: '5px'}}>
+                  <label class="form-check-label" for="inlineRadio1">
                     Private Event
                   </label>
                 </div>
@@ -205,7 +200,7 @@ const UserFeed = () => {
                     id="inlineRadio2"
                     value="option2"
                   />
-                  <label class="form-check-label" for="inlineRadio2" style={{color: 'white'}}>
+                  <label class="form-check-label" for="inlineRadio2">
                     Public Event
                   </label>
                 </div> */}
@@ -213,8 +208,8 @@ const UserFeed = () => {
               <button
                 type="submit"
                 onClick={refreshComponent}
-                className="btn btn-primary p-3 mb-2"
-                style={{ width: "50%", marginLeft: "25%", backgroundColor: "white", color: 'black' }}
+                className="btn btn-primary p-3 mb-2 bg-danger text-white"
+                style={{ width: "50%", marginLeft: "25%" }}
               >
                 Post Event!
               </button>
