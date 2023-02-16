@@ -5,8 +5,7 @@ const { authMiddleware } = require('./utils/auth');
 
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
-const canvas = require('canvas')
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3001;
 
 const app = express();
 const server = new ApolloServer({
@@ -15,10 +14,6 @@ const server = new ApolloServer({
   context: authMiddleware,
 });
 
-express()
-	.get('/', (req, res) => res.send({version: canvas.version, cairoVersion: canvas.cairoVersion}))
-	.listen(PORT, () => console.log(`Listening on ${PORT}`))
-  
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
