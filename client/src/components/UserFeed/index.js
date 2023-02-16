@@ -87,7 +87,11 @@ const UserFeed = () => {
   });
 
   const user = data?.me || data?.user || {};
+<<<<<<< HEAD
+  // const events = data?.user.events || [];
+=======
   const events = data?.user.events || [];
+>>>>>>> 355f3a0c2dfc3cb921f76d683557a0497c72e063
 
   if (loading) {
     return <div>Loading...</div>;

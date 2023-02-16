@@ -2,6 +2,9 @@
     "name": "wyd",
     "version": "1.0.0",
     "description": "",
+    "engines": {
+        "node": "16.16.0"
+    },
     "main": "server/server.js",
     "scripts": {
         "start": "node server/server.js",
@@ -21,6 +24,7 @@
         "@emotion/styled": "^11.10.0",
         "@mui/icons-material": "^5.10.2",
         "@mui/material": "^5.10.2",
+        "canvas": "^2.11.0",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "reactstrap": "^9.1.3"

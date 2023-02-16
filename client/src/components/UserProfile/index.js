@@ -35,9 +35,9 @@ const Profile = () => {
     <div>
       <div style={{textAlign: 'center'}}>
         <Image style={{width: '12vh', marginBottom: '1vh', marginTop: '1vh'}} fluid="true" src={logo}/>
-        <Link style={{width: '11vh', margin: '3vh', backgroundColor: '#541675', color: 'white', borderColor: 'grey'}} variant="warning" to="/FullProfile">Full Profile</Link>{' '}
+        <Link style={{ width: '20vh', borderStyle: 'solid', marginTop: '2vh', borderColor:'black', backgroundColor: "#a64dff", boxShadow: '5px 5px grey', marginBottom: '15px', color: 'black' }} variant="warning" to="/FullProfile">Full Profile</Link>{' '}
       </div>
-      <div style={{borderWidth: '5px', borderStyle: 'solid'}}>
+      <div style={{borderWidth: '5px', borderStyle: 'solid', borderColor:'black', marginRight: '10px'}}>
         <h1 style={{textAlign: 'center'}}> {user.username} </h1>
         <ul style={{listStyleType: 'none'}}>
           <li>Friends: { user.friends.length} </li>
